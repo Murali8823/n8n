@@ -1,0 +1,13 @@
+services:
+  n8n:
+    image: n8nio/n8n
+    ports:
+      - "127.0.0.1:5678:5678"  # Caddy will proxy from 443
+    environment:
+      - N8N_HOST=n8n.mydomain.tk
+      - N8N_PORT=5678
+      - N8N_PROTOCOL=https
+      - WEBHOOK_URL=https://n8n.mydomain.tk
+      - N8N_SECURE_COOKIE=true
+    volumes:
+      - ./n8n_data:/home/node/.n8n
